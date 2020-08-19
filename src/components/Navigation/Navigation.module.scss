@@ -1,6 +1,6 @@
 .navigation {
 	display: grid;
-	grid-template-columns: 19px auto auto;
+	grid-template-columns: 19px calc(100vw - 174px) auto;
 	align-items: center;
 	grid-column-gap: 30px
 }
@@ -9,7 +9,7 @@
 	display: grid;
 	grid-column-gap: 30px;
 	align-items: center;
-	grid-template-columns: auto auto;
+	grid-template-columns: auto auto auto auto;
 	justify-content: center;
 	justify-self: start
 }
@@ -20,7 +20,8 @@
 
 .navigation-menu__link {
 	position: relative;
-	display: block
+	display: block;
+	padding: 5px 0
 }
 
 .active {

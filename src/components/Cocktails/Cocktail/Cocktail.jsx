@@ -6,7 +6,7 @@ let Cocktail = ( props ) => {
 	return (
 		<div className = { s.item }>
 			<div className = { s.image }>
-				<NavLink to = { `/cocktails/${props.idDrink}` }>
+				<NavLink to = { `/cocktails/${props.idDrink}/cocktails` }>
 					<img className = { s.thumbnail } src = { props.strDrinkThumb } alt = { props.strDrink } />
 				</NavLink>
 			</div>

@@ -9,6 +9,15 @@ export const filterAPI = {
 	}
 }
 
+export const alcoholicAPI = {
+	getItemsByFilterQuery( query = 'Alcoholic' ) {
+		return fetch( `${baseURL}filter.php?a=${query}` )
+			.then( response => {
+				return response.json()
+			} )
+	}
+}
+
 export const detailsAPI = {
 	getItemDetailsByID( id = 11007 ) {
 		return fetch( `${baseURL}lookup.php?i=${id}` )

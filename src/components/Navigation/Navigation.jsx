@@ -21,6 +21,20 @@ let Navigation = ( props ) => {
                              activeClassName = {s.active}
                              to = "/ordinary-drinks">Ordinary Drinks</NavLink>
                 </li>
+                <li className = {s['navigation-menu__item']}>
+                    <NavLink className = {s['navigation-menu__link']}
+                             activeClassName = {s.active}
+                             to = "/alcoholic">
+                        Alcoholic
+                    </NavLink>
+                </li>
+                <li className = {s['navigation-menu__item']}>
+                    <NavLink className = {s['navigation-menu__link']}
+                             activeClassName = {s.active}
+                             to = "/non-alcoholic">
+                        Non-Alcoholic
+                    </NavLink>
+                </li>
         	</ul>
 
             <SearchContainer />

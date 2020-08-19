@@ -6,6 +6,8 @@ import CocktailsContainer from './components/Cocktails/CocktailsContainer'
 import OrdinaryDrinksContainer from './components/OrdinaryDrinks/OrdinaryDrinksContainer'
 import DetailsContainer from './components/Details/DetailsContainer'
 import SearchResultsContainer from './components/Navigation/Search/SearchResults/SearchResultsContainer'
+import AlcoholicContainer from './components/Alcoholic/AlcoholicContainer'
+import NonAlcoholicContainer from './components/NonAlcoholic/NonAlcoholicContainer'
 
 const App = ( props ) => {
     return (
@@ -20,13 +22,25 @@ const App = ( props ) => {
                     <Route exact path = "/cocktails" render = {
                         () => <CocktailsContainer />
                     } />
-                    <Route path = "/cocktails/:idDrink" render = {
+                    <Route path = "/cocktails/:idDrink/:catalogURL" render = {
                         () => <DetailsContainer />
                     } />
                     <Route exact path = "/ordinary-drinks" render = {
                         () => <OrdinaryDrinksContainer />
                     } />
-                    <Route path = "/ordinary-drinks/:idDrink" render = {
+                    <Route path = "/ordinary-drinks/:idDrink/:catalogURL" render = {
+                        () => <DetailsContainer />
+                    } />
+                    <Route exact path = "/alcoholic" render = {
+                        () => <AlcoholicContainer />
+                    } />
+                    <Route path = "/alcoholic/:idDrink/:catalogURL" render = {
+                        () => <DetailsContainer />
+                    } />
+                    <Route exact path = "/non-alcoholic" render = {
+                        () => <NonAlcoholicContainer />
+                    } />
+                    <Route path = "/non-alcoholic/:idDrink/:catalogURL" render = {
                         () => <DetailsContainer />
                     } />
                     <Route path = "/search-results/:searchQuery" render = {

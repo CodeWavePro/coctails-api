@@ -30,6 +30,12 @@
 	color: #ff6000
 }
 
+.back__link {
+	display: block;
+	font-size: 21px;
+	margin-bottom: 30px
+}
+
 @media (min-width: 768px) {
 	.details {
 		grid-row-gap: auto;

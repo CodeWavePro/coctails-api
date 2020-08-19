@@ -112,6 +112,11 @@ button {
 	opacity: 0
 }
 
+.go-back__icon {
+    font-size: 21px;
+    margin-right: 10px
+}
+
 @media (min-width: 768px) {
 	.container {
 		grid-template-columns: 1fr 1fr 1fr
