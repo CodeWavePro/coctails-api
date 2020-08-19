@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer'
 import CocktailsContainer from './components/Cocktails/CocktailsContainer'
 import OrdinaryDrinksContainer from './components/OrdinaryDrinks/OrdinaryDrinksContainer'
 import DetailsContainer from './components/Details/DetailsContainer'
+import SearchResultsContainer from './components/Navigation/Search/SearchResults/SearchResultsContainer'
 
 const App = ( props ) => {
     return (
@@ -27,6 +28,9 @@ const App = ( props ) => {
                     } />
                     <Route path = "/ordinary-drinks/:idDrink" render = {
                         () => <DetailsContainer />
+                    } />
+                    <Route path = "/search-results/:searchQuery" render = {
+                        () => <SearchResultsContainer />
                     } />
                 </Switch>
             </div>

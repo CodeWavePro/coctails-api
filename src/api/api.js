@@ -17,3 +17,12 @@ export const detailsAPI = {
 			} )
 	}
 }
+
+export const searchAPI = {
+	searchItem( searchQuery ) {
+		return fetch( `${baseURL}search.php?s=${searchQuery}` )
+			.then( response => {
+				return response.json()
+			} )
+	}
+}

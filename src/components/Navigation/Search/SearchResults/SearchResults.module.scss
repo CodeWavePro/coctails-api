@@ -3,7 +3,8 @@
 	grid-template-areas:
 		'image'
 		'title';
-	justify-items: center
+	justify-items: center;
+	max-height: 170px
 }
 
 .image {

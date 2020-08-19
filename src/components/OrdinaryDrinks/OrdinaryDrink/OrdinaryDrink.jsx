@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 
 let OrdinaryDrink = ( props ) => {
 	return (
-		<div className = { s.drink }>
+		<div className = { s.item }>
 			<div className = { s.image }>
 				<NavLink to = { `/ordinary-drinks/${props.idDrink}` }>
 					<img className = { s.thumbnail } src = { props.strDrinkThumb } alt = { props.strDrink } />

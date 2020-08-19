@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Alata&family=Nunito+Sans:wght@300&display=swap');
 
+@mixin icon() {
+	color: #fff;
+    font-size: 21px;
+    cursor: pointer;
+    transition: all ease-in-out 300ms;
+
+    &:hover {
+    	color: #ff6000
+    }
+}
+
 * {
 	box-sizing: border-box;
 	outline: none
@@ -73,6 +84,32 @@ button {
 .container,
 .container-single {
 	min-height: calc(100vh - 90px)
+}
+
+.navigation__icon {
+	@include icon();
+	margin-right: 30px;
+	cursor: default;
+
+	&:hover {
+		color: #fff
+	}
+}
+
+.search-form__icon {
+	@include icon();
+	transition: all ease-in-out 300ms
+}
+
+.search__icon {
+	@include icon();
+	position: absolute;
+	right: 0;
+	transition: all ease-in-out 300ms
+}
+
+.not-active-icon {
+	opacity: 0
 }
 
 @media (min-width: 768px) {
