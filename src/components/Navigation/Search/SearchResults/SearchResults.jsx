@@ -11,7 +11,7 @@ let SearchResults = ( props ) => {
 		drinks = props.foundDrinks.map( drink => (
 			<div key = { drink.idDrink } className = { s.item }>
 				<div className = { s.image }>
-					<NavLink to = { `/cocktails/${drink.idDrink}` }>
+					<NavLink to = { `/cocktails/${drink.idDrink}/cocktails` }>
 						<img className = { s.thumbnail } src = { drink.strDrinkThumb } alt = { drink.strDrink } />
 					</NavLink>
 				</div>
