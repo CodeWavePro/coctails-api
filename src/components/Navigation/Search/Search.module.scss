@@ -20,8 +20,7 @@
 	background-color: #121212;
 	height: 64px;
 	align-items: center;
-	top: -23px;
-	padding-left: 15px
+	top: -23px
 }
 
 .input {
@@ -44,7 +43,7 @@
 
 .active {
 	opacity: 1;
-	width: calc(100vw - 80px);
+	width: calc(100vw - 120px);
 	right: 60px;
 	pointer-events: auto
 }
