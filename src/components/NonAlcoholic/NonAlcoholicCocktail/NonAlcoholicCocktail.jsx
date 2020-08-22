@@ -6,11 +6,11 @@ let NonAlcoholicCocktail = ( props ) => {
 	return (
 		<div className = { s.item }>
 			<div className = { s.image }>
-				<NavLink to = { `/non-alcoholic/${props.idDrink}/non-alcoholic` }>
+				<NavLink to = { `/cocktail/${props.idDrink}` }>
 					<img className = { s.thumbnail } src = { props.strDrinkThumb } alt = { props.strDrink } />
 				</NavLink>
 			</div>
-			<NavLink to = { `/non-alcoholic/${props.idDrink}` }>
+			<NavLink to = { `/cocktail/${props.idDrink}` }>
 				<h2 className = { s.title }>{ props.strDrink }</h2>
 			</NavLink>
 		</div>

@@ -22,29 +22,20 @@ const App = ( props ) => {
                     <Route exact path = "/cocktails" render = {
                         () => <CocktailsContainer />
                     } />
-                    <Route path = "/cocktails/:idDrink/:catalogURL" render = {
-                        () => <DetailsContainer />
-                    } />
                     <Route exact path = "/ordinary-drinks" render = {
                         () => <OrdinaryDrinksContainer />
-                    } />
-                    <Route path = "/ordinary-drinks/:idDrink/:catalogURL" render = {
-                        () => <DetailsContainer />
                     } />
                     <Route exact path = "/alcoholic" render = {
                         () => <AlcoholicContainer />
                     } />
-                    <Route path = "/alcoholic/:idDrink/:catalogURL" render = {
-                        () => <DetailsContainer />
-                    } />
                     <Route exact path = "/non-alcoholic" render = {
                         () => <NonAlcoholicContainer />
                     } />
-                    <Route path = "/non-alcoholic/:idDrink/:catalogURL" render = {
-                        () => <DetailsContainer />
-                    } />
                     <Route path = "/search-results/:searchQuery" render = {
                         () => <SearchResultsContainer />
+                    } />
+                    <Route path = "/cocktail/:idDrink" render = {
+                        () => <DetailsContainer />
                     } />
                 </Switch>
             </div>

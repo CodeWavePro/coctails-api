@@ -1,3 +1,5 @@
+import { filterAPI } from '../api/api'
+
 const GET_ORDINARY_DRINKS				= 'GET-ORDINARY-DRINKS'
 const GET_ORDINARY_DRINKS_ERROR			= 'GET-ORDINARY-DRINKS-ERROR'
 const TRIGGER_ORDINARY_DRINKS_IS_LOADED	= 'TRIGGER-ORDINARY-DRINKS-IS-LOADED'
@@ -36,6 +38,22 @@ const ordinaryDrinksReducer = ( state = initialState, action ) => {
 }
 export default ordinaryDrinksReducer
 
-export const getOrdinaryDrinks = ( ordinaryDrinks ) => ( { type: GET_ORDINARY_DRINKS, ordinaryDrinks } )
-export const getOrdinaryDrinksError = ( error ) => ( { type: GET_ORDINARY_DRINKS_ERROR, error } )
-export const triggerOrdinaryDrinksIsLoaded = ( isLoaded ) => ( { type: TRIGGER_ORDINARY_DRINKS_IS_LOADED, isLoaded } )
+const getOrdinaryDrinks = ( ordinaryDrinks ) => ( { type: GET_ORDINARY_DRINKS, ordinaryDrinks } )
+const getOrdinaryDrinksError = ( error ) => ( { type: GET_ORDINARY_DRINKS_ERROR, error } )
+const triggerOrdinaryDrinksIsLoaded = ( isLoaded ) => ( { type: TRIGGER_ORDINARY_DRINKS_IS_LOADED, isLoaded } )
+
+export const filterOrdinaryDrinks = () => {
+	return ( dispatch ) => {
+		dispatch( triggerOrdinaryDrinksIsLoaded( false ) )
+
+		filterAPI.getItemsByFilterQuery( 'Ordinary_Drink' )
+			.then(
+				data => {
+					dispatch( getOrdinaryDrinks( data.drinks ) )
+				},
+				error => {
+					dispatch( getOrdinaryDrinksError( error ) )
+				}
+			)
+	}
+}

@@ -2,26 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import OrdinaryDrink from './OrdinaryDrink/OrdinaryDrink'
 import Preloader from '../Preloader/Preloader'
-import {
-	getOrdinaryDrinks,
-	getOrdinaryDrinksError,
-	triggerOrdinaryDrinksIsLoaded
-} from '../../redux/ordinary-drinks-reducer'
-import { filterAPI } from '../../api/api'
+import { filterOrdinaryDrinks } from '../../redux/ordinary-drinks-reducer'
 
 class OrdinaryDrinksContainer extends Component {
 	componentDidMount() {
-		this.props.triggerOrdinaryDrinksIsLoaded( false )
-
-		filterAPI.getItemsByFilterQuery( 'Ordinary_Drink' )
-			.then(
-				data => {
-					this.props.getOrdinaryDrinks( data.drinks )
-				},
-				error => {
-					this.props.getOrdinaryDrinksError( error )
-				}
-			)
+		this.props.filterOrdinaryDrinks()
 	}
 
 	render = () => {
@@ -55,6 +40,4 @@ let mapStateToProps = ( state ) => {
 		items	: state.ordinaryDrinks.items
 	}
 }
-export default connect( mapStateToProps, {
-	getOrdinaryDrinks, getOrdinaryDrinksError, triggerOrdinaryDrinksIsLoaded
-} )( OrdinaryDrinksContainer )
+export default connect( mapStateToProps, { filterOrdinaryDrinks } )( OrdinaryDrinksContainer )

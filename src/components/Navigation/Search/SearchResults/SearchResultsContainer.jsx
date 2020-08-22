@@ -4,41 +4,16 @@ import { withRouter } from 'react-router-dom'
 import SearchResults from './SearchResults'
 import Preloader from '../../../Preloader/Preloader'
 import { searchAPI } from '../../../../api/api'
-import {
-    getFoundItems,
-    getSearchError,
-    triggerSearchResultsIsLoaded
-}   from '../../../../redux/search-reducer'
+import { searchCocktails }   from '../../../../redux/search-reducer'
 
 export class SearchResultsContainer extends Component {
     componentDidMount() {
-        searchAPI.searchItem( this.props.searchQuery )
-            .then(
-                data => {
-                    if ( data.drinks ) {
-                        this.props.getFoundItems( data.drinks )
-                    }   else {
-                        this.props.getSearchError( { message: 'No items found.' } )
-                    }
-                },
-                error => {
-                    this.props.getSearchError( error )
-                }
-            )
+        this.props.searchCocktails( this.props.searchQuery )
     }
 
     componentDidUpdate( prevProps ) {
         if ( this.props.match.params.searchQuery !== prevProps.match.params.searchQuery ) {
-            this.props.triggerSearchResultsIsLoaded( false )
-            searchAPI.searchItem( this.props.searchQuery )
-                .then(
-                    data => {
-                        this.props.getFoundItems( data.drinks )
-                    },
-                    error => {
-                        this.props.getSearchError( error )
-                    }
-                )
+            this.props.searchCocktails( this.props.searchQuery )
         }
     }
 
@@ -66,6 +41,4 @@ let mapStateToProps = ( state ) => {
 
 let WithURLDataContainerComponent = withRouter( SearchResultsContainer )
 
-export default connect( mapStateToProps, {
-    getFoundItems, getSearchError, triggerSearchResultsIsLoaded
-} )( WithURLDataContainerComponent )
+export default connect( mapStateToProps, { searchCocktails } )( WithURLDataContainerComponent )

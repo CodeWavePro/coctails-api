@@ -32,23 +32,25 @@ let Search = ( props ) => {
 
 	return (
         <div className = { s.search }>
-            <div className = { s['search-wrapper'] + ( props.isInputActive ? ' ' + s.active : '' ) }>
-                <input  type = "text"
-                        className = { s.input }
-                        value = { props.searchQuery }
-                        onChange = { changeSearchInputValue }
-                        placeholder = "Search cocktail by name" />
-                <NavLink    to = { '/search-results/:' + props.searchQuery }
-                            className = { s.button }
-                            title = "Search">
-                    <FontAwesomeIcon icon = { faSearch } className = "search-form__icon" />
-                </NavLink>
-            </div>
+            <form className = { s['search-form'] }>
+                <div className = { s['search-wrapper'] + ( props.isInputActive ? ' ' + s.active : '' ) }>
+                    <input  type = "text"
+                            className = { s.input }
+                            value = { props.searchQuery }
+                            onChange = { changeSearchInputValue }
+                            placeholder = "Search cocktail by name" />
+                    <NavLink    to = { `/search-results/${props.searchQuery}` }
+                                className = { s.button }
+                                title = "Search">
+                        <FontAwesomeIcon icon = { faSearch } className = "search-form__icon" />
+                    </NavLink>
+                </div>
 
-            <div className = { s.icons } onClick = { showHideSearchField }>
-                <FontAwesomeIcon icon = { faSearch } className = { `search__icon ${inputSearchIconClass}` } />
-                <FontAwesomeIcon icon = { faTimes } className = { `search__icon ${inputCrossIconClass}` } />
-            </div>
+                <div className = { s.icons } onClick = { showHideSearchField }>
+                    <FontAwesomeIcon icon = { faSearch } className = { `search__icon ${inputSearchIconClass}` } />
+                    <FontAwesomeIcon icon = { faTimes } className = { `search__icon ${inputCrossIconClass}` } />
+                </div>
+            </form>
         </div>
     )
 }

@@ -1,10 +1,12 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import s from './SingleDetails.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from 'react-router-dom'
 
 let SingleDetails = ( props ) => {
+	let history = useHistory()
 	let details = props.details[0]
 	let ingredients = []
 
@@ -20,9 +22,9 @@ let SingleDetails = ( props ) => {
 
 	return (
 		<div className = { s['item-wrapper'] }>
-			<NavLink className = { s.back__link } to = { `/${props.catalogURL}` }>
+			<button className = { s.back__link } onClick = { history.goBack }>
 				<FontAwesomeIcon icon = { faChevronLeft } className = "go-back__icon" />Go Back
-			</NavLink>
+			</button>
 	        
 	        <div className = { s.details }>
 	        	<div className = { s.image }>

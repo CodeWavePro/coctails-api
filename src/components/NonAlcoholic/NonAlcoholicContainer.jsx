@@ -2,26 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import NonAlcoholicCocktail from './NonAlcoholicCocktail/NonAlcoholicCocktail'
 import Preloader from '../Preloader/Preloader'
-import {
-	getNonAlcoholicCocktails,
-	getNonAlcoholicCocktailsReceiveError,
-	triggerNonAlcoholicCocktailsIsLoaded
-} from '../../redux/non-alcoholic-cocktails-reducer'
-import { alcoholicAPI } from '../../api/api'
+import { filterNonAlcoholic } from '../../redux/non-alcoholic-cocktails-reducer'
 
 class NonAlcoholicContainer extends Component {
 	componentDidMount() {
-		this.props.triggerNonAlcoholicCocktailsIsLoaded( false )
-
-		alcoholicAPI.getItemsByFilterQuery( 'Non_Alcoholic' )
-			.then(
-				data => {
-					this.props.getNonAlcoholicCocktails( data.drinks )
-				},
-				error => {
-					this.props.getNonAlcoholicCocktailsReceiveError( error )
-				}
-			)
+		this.props.filterNonAlcoholic()
 	}
 
 	render = () => {
@@ -56,6 +41,4 @@ let mapStateToProps = ( state ) => {
 		items	: state.nonAlcoholicCocktails.items
 	}
 }
-export default connect( mapStateToProps, {
-	getNonAlcoholicCocktails, getNonAlcoholicCocktailsReceiveError, triggerNonAlcoholicCocktailsIsLoaded
-} )( NonAlcoholicContainer )
+export default connect( mapStateToProps, { filterNonAlcoholic } )( NonAlcoholicContainer )

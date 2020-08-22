@@ -1,11 +1,16 @@
 .search {
 	position: relative;
 	justify-self: end;
+	height: 37px;
+	z-index: 1
+}
+
+.search-form {
 	display: grid;
 	grid-template-columns: auto auto;
 	grid-column-gap: 35px;
-	height: 18px;
-	z-index: 1
+	height: inherit;
+	align-items: center
 }
 
 .search-wrapper {
@@ -19,8 +24,7 @@
 	grid-column-gap: 5px;
 	background-color: #121212;
 	height: 64px;
-	align-items: center;
-	top: -23px
+	align-items: center
 }
 
 .input {

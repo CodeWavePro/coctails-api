@@ -2,26 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Cocktail from './Cocktail/Cocktail'
 import Preloader from '../Preloader/Preloader'
-import {
-	getCocktails,
-	getCocktailsReceiveError,
-	triggerCocktailsIsLoaded
-} from '../../redux/cocktails-reducer'
-import { filterAPI } from '../../api/api'
+import { filterCocktails } from '../../redux/cocktails-reducer'
 
 class CocktailsContainer extends Component {
 	componentDidMount() {
-		this.props.triggerCocktailsIsLoaded( false )
-
-		filterAPI.getItemsByFilterQuery( 'Cocktail' )
-			.then(
-				data => {
-					this.props.getCocktails( data.drinks )
-				},
-				error => {
-					this.props.getCocktailsReceiveError( error )
-				}
-			)
+		this.props.filterCocktails()
 	}
 
 	render = () => {
@@ -55,6 +40,4 @@ let mapStateToProps = ( state ) => {
 		items	: state.cocktails.items
 	}
 }
-export default connect( mapStateToProps, {
-	getCocktails, getCocktailsReceiveError, triggerCocktailsIsLoaded
-} )( CocktailsContainer )
+export default connect( mapStateToProps, { filterCocktails } )( CocktailsContainer )

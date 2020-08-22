@@ -1,4 +1,5 @@
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import thunkMiddleware from 'redux-thunk'
 import cocktailsReducer from './cocktails-reducer'
 import ordinaryDrinksReducer from './ordinary-drinks-reducer'
 import alcoholicCocktailsReducer from './alcoholic-cocktails-reducer'
@@ -15,6 +16,6 @@ let reducers = combineReducers( {
 	search					: searchReducer
 } )
 
-let store = createStore( reducers )
+let store = createStore( reducers, applyMiddleware( thunkMiddleware ) )
 
 export default store

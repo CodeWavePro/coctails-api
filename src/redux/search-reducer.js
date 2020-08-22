@@ -1,3 +1,5 @@
+import { searchAPI } from '../api/api'
+
 const CHANGE_SEARCH_INPUT_VALUE			= 'CHANGE-SEARCH-INPUT-VALUE'
 const GET_FOUND_ITEMS					= 'GET-FOUND-ITEMS'
 const GET_SEARCH_ERROR					= 'GET-SEARCH-ERROR'
@@ -53,7 +55,27 @@ const searchReducer = ( state = initialState, action ) => {
 export default searchReducer
 
 export const changeSearchInputValue = ( searchQuery ) => ( { type: CHANGE_SEARCH_INPUT_VALUE, searchQuery } )
-export const getFoundItems = ( foundDrinks ) => ( { type: GET_FOUND_ITEMS, foundDrinks } )
-export const getSearchError = ( error ) => ( { type: GET_SEARCH_ERROR, error } )
-export const triggerSearchResultsIsLoaded = ( isLoaded ) => ( { type: TRIGGER_SEARCH_RESULTS_IS_LOADED, isLoaded } )
+const getFoundItems = ( foundDrinks ) => ( { type: GET_FOUND_ITEMS, foundDrinks } )
+const getSearchError = ( error ) => ( { type: GET_SEARCH_ERROR, error } )
+const triggerSearchResultsIsLoaded = ( isLoaded ) => ( { type: TRIGGER_SEARCH_RESULTS_IS_LOADED, isLoaded } )
 export const triggerSearchInputIsActive = ( isInputActive ) => ( { type: TRIGGER_SEARCH_INPUT_IS_ACTIVE, isInputActive } )
+
+export const searchCocktails = ( searchQuery ) => {
+	return ( dispatch ) => {
+		dispatch( triggerSearchResultsIsLoaded( false ) )
+
+		searchAPI.searchItem( searchQuery )
+            .then(
+                data => {
+                    if ( data.drinks ) {
+                        dispatch( getFoundItems( data.drinks ) )
+                    }   else {
+                        dispatch( getSearchError( { message: 'No items found.' } ) )
+                    }
+                },
+                error => {
+                    dispatch( getSearchError( error ) )
+                }
+            )
+	}
+}

@@ -1,3 +1,5 @@
+import { alcoholicAPI } from '../api/api'
+
 const GET_ALCOHOLIC_COCKTAILS				= 'GET-ALCOHOLIC-COCKTAILS'
 const GET_ALCOHOLIC_COCKTAILS_RECEIVE_ERROR	= 'GET-ALCOHOLIC-COCKTAILS-RECEIVE-ERROR'
 const TRIGGER_ALCOHOLIC_COCKTAILS_IS_LOADED	= 'TRIGGER-ALCOHOLIC-COCKTAILS-IS-LOADED'
@@ -36,6 +38,22 @@ const alcoholicCocktailsReducer = ( state = initialState, action ) => {
 }
 export default alcoholicCocktailsReducer
 
-export const getAlcoholicCocktails = ( cocktails ) => ( { type: GET_ALCOHOLIC_COCKTAILS, cocktails } )
-export const getAlcoholicCocktailsReceiveError = ( error ) => ( { type: GET_ALCOHOLIC_COCKTAILS_RECEIVE_ERROR, error } )
-export const triggerAlcoholicCocktailsIsLoaded = ( isLoaded ) => ( { type: TRIGGER_ALCOHOLIC_COCKTAILS_IS_LOADED, isLoaded } )
+const getAlcoholicCocktails = ( cocktails ) => ( { type: GET_ALCOHOLIC_COCKTAILS, cocktails } )
+const getAlcoholicCocktailsReceiveError = ( error ) => ( { type: GET_ALCOHOLIC_COCKTAILS_RECEIVE_ERROR, error } )
+const triggerAlcoholicCocktailsIsLoaded = ( isLoaded ) => ( { type: TRIGGER_ALCOHOLIC_COCKTAILS_IS_LOADED, isLoaded } )
+
+export const filterAlcoholic = () => {
+	return ( dispatch ) => {
+		dispatch( triggerAlcoholicCocktailsIsLoaded( false ) )
+
+		alcoholicAPI.getItemsByFilterQuery( 'Alcoholic' )
+			.then(
+				data => {
+					dispatch( getAlcoholicCocktails( data.drinks ) )
+				},
+				error => {
+					dispatch( getAlcoholicCocktailsReceiveError( error ) )
+				}
+			)
+	}
+}
