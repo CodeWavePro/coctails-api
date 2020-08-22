@@ -1,16 +1,12 @@
 .search {
 	position: relative;
 	justify-self: end;
-	height: 37px;
-	z-index: 1
-}
-
-.search-form {
 	display: grid;
 	grid-template-columns: auto auto;
 	grid-column-gap: 35px;
-	height: inherit;
-	align-items: center
+	align-items: center;
+	height: 37px;
+	z-index: 1
 }
 
 .search-wrapper {
