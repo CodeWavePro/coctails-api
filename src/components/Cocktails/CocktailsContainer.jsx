@@ -1,12 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import Cocktail from './Cocktail/Cocktail'
 import Preloader from '../Preloader/Preloader'
 import { filterCocktails } from '../../redux/cocktails-reducer'
 
 class CocktailsContainer extends Component {
 	componentDidMount() {
-		this.props.filterCocktails()
+		let filterBy = this.props.match.params.filterBy
+		this.props.filterCocktails( filterBy )
+	}
+
+	componentDidUpdate( prevProps ) {
+		let filterBy = this.props.match.params.filterBy
+
+		if ( filterBy !== prevProps.match.params.filterBy ) {
+			this.props.filterCocktails( filterBy )
+		}
 	}
 
 	render = () => {
@@ -40,4 +50,5 @@ let mapStateToProps = ( state ) => {
 		items	: state.cocktails.items
 	}
 }
-export default connect( mapStateToProps, { filterCocktails } )( CocktailsContainer )
+let WithURLDataContainerComponent = withRouter( CocktailsContainer )
+export default connect( mapStateToProps, { filterCocktails } )( WithURLDataContainerComponent )

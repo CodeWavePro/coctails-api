@@ -42,11 +42,19 @@ const getCocktails = ( cocktails ) => ( { type: GET_COCKTAILS, cocktails } )
 const getCocktailsReceiveError = ( error ) => ( { type: GET_COCKTAILS_RECEIVE_ERROR, error } )
 const triggerCocktailsIsLoaded = ( isLoaded ) => ( { type: TRIGGER_COCKTAILS_IS_LOADED, isLoaded } )
 
-export const filterCocktails = () => {
+export const filterCocktails = ( filterBy = 'Cocktail' ) => {
+	let isAlcoholic
+
+	if ( filterBy === 'Alcoholic' || filterBy === 'Non_Alcoholic' ) {
+		isAlcoholic = true
+	}	else {
+		isAlcoholic = false
+	}
+
 	return ( dispatch ) => {
 		dispatch( triggerCocktailsIsLoaded( false ) )
 
-		filterAPI.getItemsByFilterQuery( 'Cocktail' )
+		filterAPI.getItemsByFilterQuery( filterBy, isAlcoholic )
 			.then(
 				data => {
 					dispatch( getCocktails( data.drinks ) )

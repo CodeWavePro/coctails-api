@@ -16,24 +16,24 @@ let Navigation = ( props ) => {
                         <li className = { s['navigation-menu__item'] }>
                             <NavLink className = { s['navigation-menu__link'] }
                                      activeClassName = { s.active }
-                                     to = "/cocktails">Cocktails</NavLink>
+                                     to = "/cocktails/Cocktail">Cocktails</NavLink>
                         </li>
                         <li className = {s['navigation-menu__item']}>
                             <NavLink className = {s['navigation-menu__link']}
                                      activeClassName = {s.active}
-                                     to = "/ordinary-drinks">Ordinary Drinks</NavLink>
+                                     to = "/cocktails/Ordinary_Drink">Ordinary Drinks</NavLink>
                         </li>
                         <li className = {s['navigation-menu__item']}>
                             <NavLink className = {s['navigation-menu__link']}
                                      activeClassName = {s.active}
-                                     to = "/alcoholic">
+                                     to = "/cocktails/Alcoholic">
                                 Alcoholic
                             </NavLink>
                         </li>
                         <li className = {s['navigation-menu__item']}>
                             <NavLink className = {s['navigation-menu__link']}
                                      activeClassName = {s.active}
-                                     to = "/non-alcoholic">
+                                     to = "/cocktails/Non_Alcoholic">
                                 Non-Alcoholic
                             </NavLink>
                         </li>
