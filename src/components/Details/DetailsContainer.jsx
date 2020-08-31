@@ -4,6 +4,11 @@ import { withRouter } from 'react-router-dom'
 import { getSingleCocktail } from '../../redux/details-reducer'
 import SingleDetails from './SingleDetails/SingleDetails'
 import Preloader from '../Preloader/Preloader'
+import {
+	getError,
+	getIsLoaded,
+	getDetailsArray
+} from '../../redux/details-selectors'
 
 class DetailsContainer extends Component {
 	componentDidMount() {
@@ -45,9 +50,9 @@ class DetailsContainer extends Component {
 
 let mapStateToProps = ( state ) => {
 	return {
-		error		: state.details.error,
-		isLoaded	: state.details.isLoaded,
-		details		: state.details.details
+		error		: getError( state ),
+		isLoaded	: getIsLoaded( state ),
+		details		: getDetailsArray( state )
 	}
 }
 

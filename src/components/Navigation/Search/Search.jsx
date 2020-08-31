@@ -10,10 +10,6 @@ let Search = ( props ) => {
 		props.changeSearchInputValue( newText )
 	}
 
-    let searchInputFocusOut = () => {
-        props.triggerSearchInputIsActive( false )
-    }
-
     let showHideSearchField = () => {
         props.isInputActive
             ? props.triggerSearchInputIsActive( false )

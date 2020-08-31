@@ -4,7 +4,7 @@ import s from './Footer.module.scss'
 let Footer = ( props ) => {
 	return (
         <footer className = { s.footer }>
-            © 2020, <a href = "https://codewave.pro/" target = "_blank">CodeWavePro</a>
+            © 2020, <a href = "https://codewave.pro/" target = "_blank" rel = "noopener noreferrer">CodeWavePro</a>
         </footer>
     )
 }

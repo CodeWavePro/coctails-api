@@ -5,7 +5,10 @@ import {
     changeSearchInputValue,
     triggerSearchInputIsActive
 } from '../../../redux/search-reducer'
-import Preloader from '../../Preloader/Preloader'
+import {
+    getSearchQuery,
+    getIsInputActive
+} from '../../../redux/search-selectors'
 
 class SearchContainer extends Component {
     render = () => {
@@ -21,8 +24,8 @@ class SearchContainer extends Component {
 
 let mapStateToProps = ( state ) => {
     return {
-        searchQuery     : state.search.searchQuery,
-        isInputActive   : state.search.isInputActive
+        searchQuery     : getSearchQuery( state ),
+        isInputActive   : getIsInputActive( state )
     }
 }
 export default connect( mapStateToProps, {

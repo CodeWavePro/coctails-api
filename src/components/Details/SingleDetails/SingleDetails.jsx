@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom'
 import s from './SingleDetails.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
-import { NavLink } from 'react-router-dom'
 
 let SingleDetails = ( props ) => {
 	let history = useHistory()

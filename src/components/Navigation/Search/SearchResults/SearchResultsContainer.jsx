@@ -3,8 +3,13 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import SearchResults from './SearchResults'
 import Preloader from '../../../Preloader/Preloader'
-import { searchAPI } from '../../../../api/api'
 import { searchCocktails }   from '../../../../redux/search-reducer'
+import {
+    getError,
+    getSearchQuery,
+    getIsLoaded,
+    getFoundDrinks
+} from '../../../../redux/search-selectors'
 
 export class SearchResultsContainer extends Component {
     componentDidMount() {
@@ -32,10 +37,10 @@ export class SearchResultsContainer extends Component {
 
 let mapStateToProps = ( state ) => {
     return {
-        error       : state.search.error,
-        searchQuery : state.search.searchQuery,
-        isLoaded    : state.search.isLoaded,
-        foundDrinks : state.search.foundDrinks
+        error       : getError( state ),
+        searchQuery : getSearchQuery( state ),
+        isLoaded    : getIsLoaded( state ),
+        foundDrinks : getFoundDrinks( state )
     }
 }
 

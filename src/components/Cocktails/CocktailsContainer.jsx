@@ -4,6 +4,11 @@ import { withRouter } from 'react-router-dom'
 import Cocktail from './Cocktail/Cocktail'
 import Preloader from '../Preloader/Preloader'
 import { filterCocktails } from '../../redux/cocktails-reducer'
+import {
+	getError,
+	getIsLoaded,
+	getItems
+} from '../../redux/cocktails-selectors'
 
 class CocktailsContainer extends Component {
 	componentDidMount() {
@@ -45,9 +50,9 @@ class CocktailsContainer extends Component {
 
 let mapStateToProps = ( state ) => {
 	return {
-		error	: state.cocktails.error,
-		isLoaded: state.cocktails.isLoaded,
-		items	: state.cocktails.items
+		error	: getError( state ),
+		isLoaded: getIsLoaded( state ),
+		items	: getItems( state )
 	}
 }
 let WithURLDataContainerComponent = withRouter( CocktailsContainer )
